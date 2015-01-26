@@ -1,17 +1,17 @@
 var
   React = require("react"),
-  RootHandler = require("./root/route-handler"),
+  ErrorPage = require("./root/error-page"),
   DesktopHandler = require("./desktop/route-handler"),
   Desktop = require("./desktop/desktop"),
 
   Router = require("react-router"),
-  Routes = Router.Routes,
   Route = Router.Route,
   NotFoundRoute = Router.NotFoundRoute,
   DefaultRoute = Router.DefaultRoute;
 
-var routes = <Route name="root" path="/" handler={RootHandler}>
+var routes = <Route name="root" path="/" handler={DesktopHandler}>
   <DefaultRoute name="desktop" handler={Desktop} />
+  <NotFoundRoute name="not-found" handler={ErrorPage} />
 </Route>;
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -5,9 +5,9 @@ var DesktopHandler = React.createClass({
   displayName: "DesktopHandler",
 
   render: function () {
-    return <div data-handler="desktop">
+    return <main data-handler="desktop">
       <RouteHandler />
-    </div>;
+    </main>;
   }
 });
 

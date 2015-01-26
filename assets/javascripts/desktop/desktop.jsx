@@ -1,12 +1,23 @@
-var React = require("react");
+var
+  React = require("react"),
+  Pane  = require("../common/pane");
 
 var Desktop = React.createClass({
   displayName: "Desktop",
 
+  styleRefs: {
+    container: {
+      "position": "relative"
+    }
+  },
+
   render: function () {
-    return <div className="desktop">
+    return <main style={this.container}>
       HELLO WORLD
-    </div>;
+      <Pane>
+        hello
+      </Pane>
+    </main>;
   }
 });
 
