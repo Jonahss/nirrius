@@ -7,14 +7,18 @@ uglify        = require("gulp-uglify")
 
 browserify    = require("browserify")
 watchify      = require("watchify")
+es6ify        = require("es6ify");
+reactify      = require("reactify");
 bundleLogger  = require("../util/bundleLogger")
 handleErrors  = require("../util/handleErrors")
 
 {ENVIRONMENT} = require("../../config/application")
 isProduction  = ENVIRONMENT is "production"
 
+es6ify.traceurOverrides =
+  experimental: true
+
 options =
-  entries: ["./assets/javascripts/application.jsx"]
   extensions: [".jsx"]
   cache: {},
   packageCache: {},
@@ -23,7 +27,10 @@ unless isProduction
   # Required for Watchify.
   options.fullPaths = true
 
-b = browserify(options)
+b = browserify(es6ify.runtime, options)
+  .add("./assets/javascripts/application.jsx")
+  .transform(reactify)
+  .transform(es6ify.configure(/.jsx/))
 
 bundleAndWatch = ->
   b = watchify(b)

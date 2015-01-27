@@ -4,6 +4,7 @@
   "browser": true,
   "curly": true,
   "debug": false,
+  "esnext": true,
   "eqeqeq": true,
   "eqnull": false,
   "evil": false,

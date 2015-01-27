@@ -3,11 +3,8 @@ var
   ErrorPage = require("./root/error-page"),
   DesktopHandler = require("./desktop/route-handler"),
   Desktop = require("./desktop/desktop"),
-
   Router = require("react-router"),
-  Route = Router.Route,
-  NotFoundRoute = Router.NotFoundRoute,
-  DefaultRoute = Router.DefaultRoute;
+  {Route, NotFoundRoute, DefaultRoute} = Router;
 
 var routes = <Route name="root" path="/" handler={DesktopHandler}>
   <DefaultRoute name="desktop" handler={Desktop} />
