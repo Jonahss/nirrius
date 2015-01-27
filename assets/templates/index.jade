@@ -9,7 +9,41 @@ html.no-js(lang="en-US")
 
     script(src="#{asset('application.js')}")
 
-    link(rel="stylesheet" type="text/css" href="#{asset('application.css')}")
+    style.
+      *, *:before, *:after {
+        box-sizing: border-box;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html, body, main {
+        height: 100%;
+      }
+
+      body {
+        background: #{theme.gray.base};
+        cursor: default;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .selectable {
+        -webkit-user-select: all;
+        -moz-user-select: all;
+        -ms-user-select: all;
+        user-select: all;
+      }
+      ::selection, ::-moz-selection {
+        background: #{theme.black}
+        color: #{theme.teal.light};
+      }
 
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
