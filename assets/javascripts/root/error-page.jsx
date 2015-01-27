@@ -1,11 +1,11 @@
 var React = require("react");
 
 var styleRefs = {
-  "container": {
-    "display": "block",
-    "background-color": "black",
-    "color": "white",
-    "height": "100%"
+  container: {
+    display: "block",
+    backgroundColor: "black",
+    color: "white",
+    height: "100%"
   }
 };
 

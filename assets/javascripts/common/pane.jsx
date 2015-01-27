@@ -5,18 +5,18 @@ var
 
 var styleRefs = {
   container: {
-    "background-color": "black",
-    "display": "inline-block",
-    "padding": 10,
-    "position": "absolute"
+    backgroundColor: "black",
+    display: "inline-block",
+    padding: 10,
+    position: "absolute"
   },
 
   header: {
-    "background-color": theme.teal.light
+    backgroundColor: theme.teal.light
   },
 
   body: {
-    "background-color": "white"
+    backgroundColor: "white"
   }
 };
 
