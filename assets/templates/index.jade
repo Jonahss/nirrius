@@ -25,13 +25,14 @@ html.no-js(lang="en-US")
 
       body {
         background: #{theme.gray.base};
-        cursor: default;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        cursor: default;
+        cursor: url(#{asset("cursor.svg")}), default
       }
 
       .selectable {
