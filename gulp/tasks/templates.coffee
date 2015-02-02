@@ -10,6 +10,6 @@ options =
   locals: {config, asset, meta, theme}
 
 gulp.task "templates", ->
-  gulp.src "assets/templates/**/*.jade"
+  gulp.src "assets/templates/*.jade"
     .pipe jade(options)
     .pipe gulp.dest "build"
