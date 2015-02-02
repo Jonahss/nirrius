@@ -23,7 +23,7 @@ var styleRefs = {
 var RootHandler = React.createClass({
   displayName: "pane",
 
-  getDefaultProps: function () {
+  getDefaultProps() {
     return {
       title: "Window",
       position: {
@@ -33,16 +33,16 @@ var RootHandler = React.createClass({
     };
   },
 
-  getInitialState: function () {
+  getInitialState() {
     return {
       title: this.props.title,
       position: this.props.position
     };
   },
 
-  render: function () {
-    return <Draggable handle=".drag-handle" start={this.state.position}>
-      <div style={styleRefs.container}>
+  render() {
+    return <Draggable handle=".drag-handle" start={this.state.position} onStart={this.props.onFocus}>
+      <div style={styleRefs.container} onClick={this.props.onFocus}>
         <header className="drag-handle" style={styleRefs.header}>
           {this.state.title}
         </header>

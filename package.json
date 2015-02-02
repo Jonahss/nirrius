@@ -36,7 +36,9 @@
     "watchify": "~2.3.0"
   },
   "dependencies": {
+    "immutable": "^3.6.2",
     "lodash": "^2.4.1",
+    "marty": "^0.8.9",
     "moment": "~2.7.0",
     "react": "~0.12.2",
     "react-draggable": "^0.4.0",
