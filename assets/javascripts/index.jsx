@@ -1,3 +1,5 @@
+require("stylesheets/index.styl")
+
 var
   React = require("react"),
   ErrorPage = require("./root/error-page"),

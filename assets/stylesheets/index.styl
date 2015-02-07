@@ -1,0 +1,32 @@
+@import "nib"
+@import "~normalize.css/normalize.css"
+json("../javascripts/resources/theme.json")
+
+*, *:before, *:after
+ box-sizing border-box
+
+*
+ margin 0
+ padding 0
+
+html, body, main
+ height: 100vh
+
+body
+  background gray-base
+  cursor: url("../images/cursor.svg"), default
+  font-family: font-sans-serif
+  font-smoothing antialiased
+  text-rendering optimizeLegibility
+  user-select none
+
+[data-selectable]
+  user-select all
+
+::selection
+  background: black
+  color: teal-light
+
+::-moz-selection
+  background: black
+  color: teal-light

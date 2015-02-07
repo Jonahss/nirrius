@@ -1,5 +1,17 @@
 {
+  "text": {
+    "small": "12px",
+    "regular": "16px",
+    "large": "20px"
+  },
+
+  "font": {
+    "sans-serif": "\"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", \"Meiryo\", Meiryo, \"MS P Gothic\", \"MS PGothic\", sans-serif",
+    "serif": "\"Hiragino Mincho Pro W3\", \"Hiragino Mincho Pro\", \"MS P Mincho\", \"MS PMincho\", serif"
+  },
+
   "black": "#1d1d1d",
+
   "gray": {
     "light": "#ccc",
     "base": "#777",
