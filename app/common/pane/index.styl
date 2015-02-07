@@ -1,0 +1,44 @@
+json("../../resources/theme.json")
+
+[data-component="pane"]
+  border 3px solid black
+  box-shadow rgba(0, 0, 0, 0.1) -3px 4px 0
+  display inline-block
+  position absolute
+  transform translate3d(0,0,0)
+
+  & > header
+    align-items center
+    display flex
+    justify-content space-between
+    padding 2px 5px
+    background-color teal-light
+
+  .primary-details
+    background-image repeating-linear-gradient(to bottom, transparent 0, transparent 3px, black 2px, black 4px)
+    display inline-flex
+    flex-grow: 1
+    height 100%
+    justify-content center
+    padding 0 60px
+
+    .title
+      background-color teal-light
+      font-size text-small
+      padding 0 10px
+
+  .actions
+    margin-left 5px
+
+    .action
+      padding 0 4px
+
+      &:hover
+        background-color rgba(0, 0, 0, 0.1)
+
+      &:active
+        background-color rgba(0, 0, 0, 0.3)
+
+  .body
+    background-color white
+    padding: 10px

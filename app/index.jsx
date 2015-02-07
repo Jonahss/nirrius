@@ -1,10 +1,10 @@
-require("stylesheets/index.styl")
+require("./index.styl")
 
 var
   React = require("react"),
   ErrorPage = require("./root/error-page"),
+  Desktop = require("./desktop"),
   DesktopHandler = require("./desktop/route-handler"),
-  Desktop = require("./desktop/desktop"),
   Router = require("react-router"),
   {Route, NotFoundRoute, DefaultRoute} = Router;
 

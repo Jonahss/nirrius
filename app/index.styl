@@ -1,6 +1,6 @@
 @import "nib"
 @import "~normalize.css/normalize.css"
-json("../javascripts/resources/theme.json")
+json("./resources/theme.json")
 
 *, *:before, *:after
  box-sizing border-box
@@ -14,8 +14,9 @@ html, body, main
 
 body
   background gray-base
-  cursor: url("../images/cursor.svg"), default
+  cursor: url("../assets/images/cursor.svg"), default
   font-family: font-sans-serif
+  font-size: text-regular
   font-smoothing antialiased
   text-rendering optimizeLegibility
   user-select none

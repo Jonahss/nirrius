@@ -1,6 +1,6 @@
 var
   path = require("path"),
-  metaAttributes = require("./assets/javascripts/resources/meta-attributes.json"),
+  metaAttributes = require("./app/resources/meta-attributes.json"),
   webpack = require("webpack"),
   HtmlWebpackPlugin = require("html-webpack-plugin"),
   nib = require("nib"),
@@ -27,8 +27,7 @@ module.exports = {
   // devtool: "source-map",
   devtool: "eval",
   entry: [
-    "./assets/javascripts/index.jsx",
-    // WebpackDevServer host and port
+    "./app/index.jsx",
     "webpack-dev-server/client?http://0.0.0.0:8080",
     "webpack/hot/only-dev-server"
   ],
@@ -57,7 +56,7 @@ module: {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "assets/templates/index.html",
+      template: "app/index.html",
       meta: metaAttributes
     }),
     new webpack.HotModuleReplacementPlugin(),

@@ -1,20 +1,23 @@
+require("./index.styl")
+
 var
   React = require("react"),
   Marty = require("marty"),
   Pane  = require("../common/pane"),
   desktopStore = require("../stores/desktop"),
-  desktopActions = require("../actions/desktop");
+  desktopActions = require("../actions/desktop")
 
-var desktopStoreState = Marty.createStateMixin(desktopStore);
+var desktopStoreState = Marty.createStateMixin({
+  listenTo: desktopStore,
+  getState: function () {
+    return {
+      panes: desktopStore.getAllPanes()
+    }
+  }
+});
 
 var Desktop = React.createClass({
   mixins: [desktopStoreState],
-
-  styleRefs: {
-    container: {
-      "position": "relative"
-    }
-  },
 
   componentDidMount() {
     [{title: "first", position: {x: 50, y: 60}},
@@ -27,20 +30,22 @@ var Desktop = React.createClass({
     desktopActions.bringPaneToFront(index);
   },
 
-  renderPanes() {
-    var panes = [];
-    for (var i = 0; i < this.state.panes.size; i++) {
-      var attributes = this.state.panes.get(i);
-      panes.push(<Pane {...attributes} key={attributes.id} onFocus={this.bringPaneToFront.bind(this, i)}>
-        Hello!
-      </Pane>);
-    }
+  closePane(index) {
+    desktopActions.closePane(index)
+  },
 
-    return panes;
+  renderPanes() {
+    var self = this
+
+    return this.state.panes.map(function (attributes, i) {
+      return <Pane {...attributes} key={attributes.id} onClose={self.closePane.bind(self, i)} onFocus={self.bringPaneToFront.bind(self, i)}>
+        Hello!
+      </Pane>
+    })
   },
 
   render() {
-    return <main style={this.container}>
+    return <main data-component="desktop">
       {this.renderPanes()}
     </main>;
   }
