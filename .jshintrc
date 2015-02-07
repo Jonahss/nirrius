@@ -1,8 +1,8 @@
 {
-  "asi": false,
+  "asi": true,
   "boss": false,
   "browser": true,
-  "curly": true,
+  "curly": false,
   "debug": false,
   "esnext": true,
   "eqeqeq": true,
