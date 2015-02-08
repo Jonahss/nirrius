@@ -5,21 +5,21 @@ json("./resources/theme.json")
 *, *:before, *:after
  box-sizing border-box
 
-*
- margin 0
- padding 0
-
 html, body, main
- height: 100vh
+ height: 100%
 
 body
   background gray-base
-  cursor: url("../assets/images/cursor.svg"), default
-  font-family: font-sans-serif
-  font-size: text-regular
+  cursor url("../assets/images/cursor.svg"), default
+  font-family font-sans-serif
+  font-size text-regular
   font-smoothing antialiased
+  line-height 1.45
   text-rendering optimizeLegibility
   user-select none
+
+h1, h2, h3, h4, h5
+  font-family font-serif
 
 [data-selectable]
   user-select all
@@ -31,3 +31,25 @@ body
 ::-moz-selection
   background: black
   color: teal-light
+
+.body::-webkit-scrollbar
+  width: 14px
+
+.body::-webkit-scrollbar-track
+  background-color lighten(gray-light, 80%)
+  background-image url("../assets/images/dotted.png")
+  background-size 2px
+  background-repeat repeat
+
+.body::-webkit-scrollbar-thumb
+  background-image url("../assets/images/dotted.png")
+  background-color teal-light
+  background-size 2px
+  background-repeat repeat
+  outline: 2px solid gray-base
+
+.body::-webkit-scrollbar-corner
+  background-image url("../assets/images/dotted.png")
+  background-color lighten(teal-light, 50%)
+  background-size 2px
+  background-repeat repeat

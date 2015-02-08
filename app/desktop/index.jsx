@@ -2,6 +2,7 @@ require("./index.styl")
 
 var
   React = require("react"),
+  Router = require("react-router"),
   Marty = require("marty"),
   Pane  = require("../common/pane/index.jsx"),
   desktopStore = require("../stores/desktop"),
@@ -9,16 +10,14 @@ var
 
 var desktopStoreState = Marty.createStateMixin(desktopStore);
 
-var Desktop = React.createClass({
-  mixins: [desktopStoreState],
+module.exports = React.createClass({
+  mixins: [Router.State, desktopStoreState],
 
   componentDidMount() {
-    [{title: "first", position: {x: 50, y: 60}},
-    {title: "second", position: {x: 50, y: 80}},
-    {title: "third", position: {x: 200, y: 200}},
-    {title: "foo", position: {x: 80, y: 50}},
-    {title: "bar", position: {x: 100, y: 200}},
-    {title: "fourth", position: {x: 300, y: 300}}].forEach(o => desktopActions.createPane(o));
+    var {username, entryname} = this.getParams()
+    if (typeof username !== null) {
+      desktopActions.getPaneFromRoute(username, entryname)
+    }
   },
 
   bringPaneToFront(index) {
@@ -36,18 +35,28 @@ var Desktop = React.createClass({
   },
 
   renderPanes() {
-    var self = this
+    var
+      _this = this,
+      panes = []
 
-    return this.state.panes.map(function (attributes, i) {
-      return <Pane
+    this.state.panes.forEach(function (attributes, i) {
+      var body = attributes.body
+
+      if (typeof attributes.body === "string") {
+        body = <div dangerouslySetInnerHTML={{__html: attributes.body}} />
+      }
+
+      panes.push(<Pane
         {...attributes}
-        key={attributes.id}
-        onResize={self.togglePaneMaximization.bind(self, i)}
-        onClose={self.closePane.bind(self, i)}
-        onFocus={self.bringPaneToFront.bind(self, i)}>
-        Hello!
-      </Pane>
+        key={attributes.paneID}
+        position={{x: (i + 1) * 20, y: (i + 1) * 20}}
+        onResize={_this.togglePaneMaximization.bind(_this, i)}
+        onClose={_this.closePane.bind(_this, i)}
+        onFocus={_this.bringPaneToFront.bind(_this, i)}>
+        {body}
+      </Pane>)
     })
+    return panes
   },
 
   render() {
@@ -56,5 +65,3 @@ var Desktop = React.createClass({
     </main>;
   }
 });
-
-module.exports = Desktop;

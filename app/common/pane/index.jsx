@@ -7,10 +7,10 @@ var
   Draggable = require("react-draggable")
 
 module.exports = React.createClass({
-  displayName: "pane",
 
   getDefaultProps() {
     return {
+      synchronized: true,
       title: "Window",
       maximized: false,
       position: {
@@ -42,12 +42,12 @@ module.exports = React.createClass({
           </div>
         </header>
 
-        <section className="body">
+        <section data-selectable className="body">
           {this.props.children}
         </section>
 
         <footer className="connection-status">
-          <SynchronizeBar />
+          <SynchronizeBar refreshDelay={this.props.synchronized ? 3000 : 100} />
         </footer>
       </div>
     </Draggable>
