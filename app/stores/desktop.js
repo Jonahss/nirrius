@@ -7,7 +7,8 @@ module.exports = Marty.createStore({
   handlers: {
     createPane: constants.CREATE_PANE,
     bringPaneToFront: constants.BRING_PANE_TO_FRONT,
-    closePane: constants.CLOSE_PANE
+    closePane: constants.CLOSE_PANE,
+    togglePaneMaximization: constants.TOGGLE_PANE_MAXIMIZATION
   },
 
   getInitialState() {
@@ -42,6 +43,12 @@ module.exports = Marty.createStore({
 
   closePane(index) {
     this.state.panes.splice(index, 1)
+    this.hasChanged()
+  },
+
+  togglePaneMaximization(index) {
+    var pane = this.state.panes[index]
+    pane.maximized = !pane.maximized
     this.hasChanged()
   }
 })

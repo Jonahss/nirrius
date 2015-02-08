@@ -13,5 +13,9 @@ module.exports = Marty.createActionCreators({
 
   closePane: constants.CLOSE_PANE(function (index) {
     this.dispatch(index);
+  }),
+
+  togglePaneMaximization: constants.TOGGLE_PANE_MAXIMIZATION(function (index) {
+    this.dispatch(index);
   })
 })

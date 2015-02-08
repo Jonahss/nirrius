@@ -1,0 +1,70 @@
+json("../../resources/theme.json")
+
+[data-component="synchronize-bar"]
+  align-items center
+  background-color white
+  display flex
+  justify-content space-between
+
+  .label
+    font-size text-small
+    line-height 1
+    padding-bottom 4px
+
+  .label + .bar
+    margin-left: 8px
+
+  .bar
+    height 5px
+    flex-grow 1
+    background-size 4px 100%
+    background-image repeating-linear-gradient(
+        to right,
+        teal-dark,
+        red-base 1px,
+        white 2px,
+        white 4px)
+
+  &[data-strength="2"] .bar
+    background-image repeating-linear-gradient(
+    to right,
+    teal-dark,
+    red-base 1px,
+    white 2px,
+    white 4px)
+
+  &[data-strength="3"] .bar
+    background-image repeating-linear-gradient(
+    to right,
+    teal-dark,
+    red-base 2px,
+    white 2px,
+    white 5px)
+
+  &[data-strength="4"] .bar
+    background-image repeating-linear-gradient(
+    to right,
+    teal-dark,
+    red-base 3px,
+    white 2px,
+    white 4px)
+
+  &[data-strength="5"] .bar,
+  &[data-strength="6"] .bar,
+  &[data-strength="7"] .bar
+    background-image repeating-linear-gradient(
+        to right,
+        teal-light,
+        teal-light 1px,
+        red-base 2px,
+        red-base 4px)
+
+  &[data-strength="8"] .bar,
+  &[data-strength="9"] .bar,
+  &[data-strength="10"] .bar
+    background-image repeating-linear-gradient(
+        to right,
+        teal-base,
+        teal-base 1px,
+        white 2px,
+        white 4px)

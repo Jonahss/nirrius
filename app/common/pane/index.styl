@@ -1,21 +1,42 @@
 json("../../resources/theme.json")
 
 [data-component="pane"]
+  background white
   border 3px solid black
   box-shadow rgba(0, 0, 0, 0.1) -3px 4px 0
-  display inline-block
+  display flex
+  flex-flow column
+  overflow hidden
+  min-width 250px
   position absolute
+  resize both
   transform translate3d(0,0,0)
+
+  &.prominent:not(.maximized)
+    left: 25%
+    top: 25%
+    width 100vw
+    height 100vh
+
+  &.maximized
+    left 0 !important
+    top 0 !important
+    width 100vw !important
+    height 100vh !important
+    border-width 1px
+    z-index 10
 
   & > header
     align-items center
-    display flex
+    display inline-flex
     justify-content space-between
     padding 2px 5px
     background-color teal-light
 
   .primary-details
-    background-image repeating-linear-gradient(to bottom, transparent 0, transparent 3px, black 2px, black 4px)
+    background-image url("../../../assets/images/dotted.png")
+    background-size 2px
+    background-repeat repeat
     display inline-flex
     flex-grow: 1
     height 100%
@@ -28,6 +49,7 @@ json("../../resources/theme.json")
       padding 0 10px
 
   .actions
+    display flex
     margin-left 5px
 
     .action
@@ -37,8 +59,13 @@ json("../../resources/theme.json")
         background-color rgba(0, 0, 0, 0.1)
 
       &:active
+        transform: translateY(1px)
         background-color rgba(0, 0, 0, 0.3)
 
   .body
     background-color white
-    padding: 10px
+    flex-grow 1
+    padding 10px
+
+  .connection-status
+    padding 0 15px 0 10px

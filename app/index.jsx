@@ -2,7 +2,7 @@ require("./index.styl")
 
 var
   React = require("react"),
-  ErrorPage = require("./root/error-page"),
+  ErrorPage = require("./error-page"),
   Desktop = require("./desktop"),
   DesktopHandler = require("./desktop/route-handler"),
   Router = require("react-router"),

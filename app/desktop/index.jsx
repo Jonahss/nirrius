@@ -3,18 +3,11 @@ require("./index.styl")
 var
   React = require("react"),
   Marty = require("marty"),
-  Pane  = require("../common/pane"),
+  Pane  = require("../common/pane/index.jsx"),
   desktopStore = require("../stores/desktop"),
   desktopActions = require("../actions/desktop")
 
-var desktopStoreState = Marty.createStateMixin({
-  listenTo: desktopStore,
-  getState: function () {
-    return {
-      panes: desktopStore.getAllPanes()
-    }
-  }
-});
+var desktopStoreState = Marty.createStateMixin(desktopStore);
 
 var Desktop = React.createClass({
   mixins: [desktopStoreState],
@@ -23,6 +16,8 @@ var Desktop = React.createClass({
     [{title: "first", position: {x: 50, y: 60}},
     {title: "second", position: {x: 50, y: 80}},
     {title: "third", position: {x: 200, y: 200}},
+    {title: "foo", position: {x: 80, y: 50}},
+    {title: "bar", position: {x: 100, y: 200}},
     {title: "fourth", position: {x: 300, y: 300}}].forEach(o => desktopActions.createPane(o));
   },
 
@@ -30,15 +25,26 @@ var Desktop = React.createClass({
     desktopActions.bringPaneToFront(index);
   },
 
-  closePane(index) {
+  closePane(index, event) {
+    // Prevent pane rearrangement.
+    event.stopPropagation()
     desktopActions.closePane(index)
+  },
+
+  togglePaneMaximization(index) {
+    desktopActions.togglePaneMaximization(index)
   },
 
   renderPanes() {
     var self = this
 
     return this.state.panes.map(function (attributes, i) {
-      return <Pane {...attributes} key={attributes.id} onClose={self.closePane.bind(self, i)} onFocus={self.bringPaneToFront.bind(self, i)}>
+      return <Pane
+        {...attributes}
+        key={attributes.id}
+        onResize={self.togglePaneMaximization.bind(self, i)}
+        onClose={self.closePane.bind(self, i)}
+        onFocus={self.bringPaneToFront.bind(self, i)}>
         Hello!
       </Pane>
     })

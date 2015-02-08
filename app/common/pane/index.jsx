@@ -1,15 +1,18 @@
 require("./index.styl")
 
 var
-  React = require("react"),
+  React = require("react/addons"),
+  SynchronizeBar = require("../synchronize-bar"),
+  {classSet} = React.addons,
   Draggable = require("react-draggable")
 
-var RootHandler = React.createClass({
+module.exports = React.createClass({
   displayName: "pane",
 
   getDefaultProps() {
     return {
       title: "Window",
+      maximized: false,
       position: {
         x: 10,
         y: 10
@@ -26,7 +29,7 @@ var RootHandler = React.createClass({
 
   render() {
     return <Draggable handle="[data-handle]" start={this.state.position} onStart={this.props.onFocus}>
-      <div data-component="pane" onClick={this.props.onFocus}>
+      <div data-component="pane" className={classSet({maximized: this.props.maximized})} onClick={this.props.onFocus}>
         <header>
           <div data-handle className="primary-details">
             <div data-handle className="title">{this.state.title}</div>
@@ -42,9 +45,11 @@ var RootHandler = React.createClass({
         <section className="body">
           {this.props.children}
         </section>
+
+        <footer className="connection-status">
+          <SynchronizeBar />
+        </footer>
       </div>
     </Draggable>
   }
 })
-
-module.exports = RootHandler
