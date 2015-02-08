@@ -14,7 +14,7 @@ loaders = [
   {test: /\.woff$/, loader: "url-loader?prefix=font/&limit=8192"},
   {test: /\.eot$/,  loader: "file-loader?prefix=font/"},
   {test: /\.ttf$/,  loader: "file-loader?prefix=font/"},
-  {test: /\.jade$/, loader: "jade-html-loader"},
+  {test: /\.md$/,   loader: "html!remarkable"},
   {test: /\.styl$/, loader: "style-loader!css-loader!stylus-loader?paths=node_modules/"},
   {test: /\.json$/, loader: "json-loader", exclude: [/node_modules/]},
   {test: /\.js$/,   loader: "6to5-loader?experimental&optional=selfContained", exclude: [/node_modules/]},
@@ -46,6 +46,12 @@ module.exports = {
 module: {
   loaders: loaders,
     noParse: /\.min\.js/
+  },
+  remarkable: {
+    html: true,
+    preset: "full",
+    linkify: true,
+    typographer: true
   },
   stylus: {
     use: [nib()]

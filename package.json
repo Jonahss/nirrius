@@ -38,12 +38,15 @@
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
+    "html-loader": "^0.2.3",
+    "immutable": "^3.6.2",
     "lodash": "^2.4.1",
     "marty": "^0.8.10",
     "moment": "~2.7.0",
     "normalize.css": "^3.0.2",
     "react": "~0.12.2",
     "react-draggable": "^0.4.0",
-    "react-router": "^0.11.6"
+    "react-router": "^0.11.6",
+    "remarkable-loader": "0.0.2"
   }
 }
