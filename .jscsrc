@@ -1,4 +1,6 @@
 {
+  "esprima": "esprima-fb",
+  "fileExtensions": [".js", ".jsx"],
   "esnext": true,
   "excludeFiles": [
     "build/**",
