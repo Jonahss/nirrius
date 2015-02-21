@@ -1,6 +1,6 @@
 require("./index.styl")
 
-var React = require("react")
+let React = require("react")
 module.exports = React.createClass({
   getDefaultProps() {
     return {
@@ -14,7 +14,7 @@ module.exports = React.createClass({
   },
 
   render() {
-    var
+    let
       props = this.props,
       entries = props.entries.map((entry, i) =>
       <li

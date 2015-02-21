@@ -1,6 +1,6 @@
 require("./index.styl")
 
-var
+let
   React = require("react/addons"),
   SynchronizeBar = require("../synchronize-bar"),
   {classSet} = React.addons,

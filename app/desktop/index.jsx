@@ -1,20 +1,19 @@
 require("./index.styl")
 
-var
+let
   React = require("react"),
   Router = require("react-router"),
   Marty = require("marty"),
   Pane  = require("../common/pane/index.jsx"),
   desktopStore = require("../stores/desktop"),
-  desktopActions = require("../actions/desktop")
-
-var desktopStoreState = Marty.createStateMixin(desktopStore);
+  desktopActions = require("../actions/desktop"),
+  desktopStoreState = Marty.createStateMixin(desktopStore);
 
 module.exports = React.createClass({
   mixins: [Router.State, desktopStoreState],
 
   componentDidMount() {
-    var {username, entryname} = this.getParams()
+    let {username, entryname} = this.getParams()
     if (typeof username !== null) {
       desktopActions.getPaneFromRoute(username, entryname)
     }
@@ -35,12 +34,10 @@ module.exports = React.createClass({
   },
 
   renderPanes() {
-    var
-      _this = this,
-      panes = []
+    let panes = []
 
     this.state.panes.forEach(function (attributes, i) {
-      var body = attributes.body
+      let body = attributes.body
 
       if (typeof attributes.body === "string") {
         body = <div dangerouslySetInnerHTML={{__html: attributes.body}} />
@@ -49,18 +46,19 @@ module.exports = React.createClass({
       panes.push(<Pane
         {...attributes}
         key={attributes.paneID}
-        position={{x: (i + 1) * 20, y: (i + 1) * 20}}
-        onResize={_this.togglePaneMaximization.bind(_this, i)}
-        onClose={_this.closePane.bind(_this, i)}
-        onFocus={_this.bringPaneToFront.bind(_this, i)}>
+        position={{x: (i + 1) * 20, y: (i + 1) * 25}}
+        onResize={this.togglePaneMaximization.bind(this, i)}
+        onClose={this.closePane.bind(this, i)}
+        onFocus={this.bringPaneToFront.bind(this, i)}>
         {body}
       </Pane>)
-    })
+    }.bind(this))
     return panes
   },
 
   render() {
-    return <main data-component="desktop">
+    return <main data-component='desktop'>
+      <div className="scanlines"></div>
       {this.renderPanes()}
     </main>;
   }

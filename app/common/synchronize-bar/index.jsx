@@ -1,6 +1,6 @@
 require("./index.styl")
 
-var
+let
   React = require("react"),
   labels = {
     0:  "◷",

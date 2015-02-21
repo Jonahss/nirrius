@@ -1,4 +1,4 @@
-var
+let
   _ = require("lodash"),
   Immutable = require("immutable"),
   Marty = require("marty"),
@@ -31,7 +31,7 @@ module.exports = Marty.createStore({
   },
 
   bringPaneToFront(index) {
-    var
+    let
       panes = this.state.panes,
       pane
 
@@ -49,7 +49,7 @@ module.exports = Marty.createStore({
   },
 
   togglePaneMaximization(index) {
-    var pane = this.state.panes.get(index)
+    let pane = this.state.panes.get(index)
     pane.maximized = !pane.maximized
 
     this.state.panes = this.state.panes.set(index, pane)

@@ -1,6 +1,8 @@
+"use strict"
+
 require("./index.styl")
 
-var
+let
   React = require("react"),
   ErrorPage = require("./error-page"),
   Desktop = require("./desktop"),
@@ -9,7 +11,7 @@ var
   Router = require("react-router"),
   {Route, NotFoundRoute, DefaultRoute} = Router
 
-var routes = <Route name="root" path="/" handler={DesktopHandler}>
+let routes = <Route name="root" path="/" handler={DesktopHandler}>
   <DefaultRoute name="default-desktop" handler={Desktop} />
 
   <Route name="users" path="/~:username/?:entryname?" handler={UsersHandler}>
@@ -19,8 +21,8 @@ var routes = <Route name="root" path="/" handler={DesktopHandler}>
   <NotFoundRoute name="not-found" handler={ErrorPage} />
 </Route>
 
-document.addEventListener("DOMContentLoaded", function () {
-  Router.run(routes, Router.HistoryLocation, function (Handler) {
-    return React.render(<Handler />, document.body)
-  })
-})
+document.addEventListener("DOMContentLoaded", () =>
+  Router.run(routes, Router.HistoryLocation, (Handler) =>
+    React.render(<Handler />, document.body)
+  )
+)

@@ -1,4 +1,4 @@
-var
+let
   React = require("react"),
   Marty = require("marty"),
   constants = require("../constants/desktop"),
@@ -24,7 +24,7 @@ module.exports = Marty.createActionCreators({
   }),
 
   getPaneFromRoute: constants.GET_PANE_FROM_ROUTE(function (username, entryname) {
-    var user = usersData[username]
+    let user = usersData[username]
 
     if (typeof user === "undefined") {
       return this.dispatch({
@@ -34,7 +34,7 @@ module.exports = Marty.createActionCreators({
       })
     }
 
-    var entry = user.entries.filter(e => e.date === entryname)[0]
+    let entry = user.entries.filter(e => e.date === entryname)[0]
 
     // debugger
     if (typeof entry !== "undefined") {
