@@ -11,5 +11,5 @@
 node_modules/**/*
 
 # Credentials.
-config/aws.yml
+config/aws.json
 
