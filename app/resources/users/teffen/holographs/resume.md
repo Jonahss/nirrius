@@ -1,13 +1,13 @@
-<header>
+<div class="primary-details">
 
-# Eric Wright
+# Teffen Ellis
 ## Product Engineer
 ### Portland, Oregon - 586-447-7799
-#### dev@ericwright.me - http://ericwright.me
+#### teffen@nirri.us - http://nirri.us
 
-</header>
+</div>
 
-<section id="education">
+<div class="education">
 
 ## Education
 
@@ -17,9 +17,9 @@ Minoring in **Business Management**.
 
 Lawrence Technological University - May 2013
 
-</section>
+</div>
 
-<section id="experience">
+<div class="experience">
 
 ## Highlighted Work Experience
 
@@ -62,3 +62,5 @@ Mango Languages contacted me to create a **Google Hangout application** called *
 * Deployed from initial concept to production **1 month before deadline**.
 * Built on **Heroku** and **Twitter Bootstrap** using **Ruby on Rails**.
 * Collaborated with **Google** to harness their immature API.
+
+</div>

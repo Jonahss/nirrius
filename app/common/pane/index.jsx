@@ -28,18 +28,24 @@ module.exports = React.createClass({
   },
 
   render() {
-    return <Draggable handle="[data-handle]" start={this.state.position} onStart={this.props.onFocus}>
-      <div data-component="pane" className={classSet({maximized: this.props.maximized})} onClick={this.props.onFocus}>
+    return <Draggable
+      handle="[data-component='pane']:not(.maximized) [data-handle]"
+      start={this.state.position}
+      onStart={this.props.onFocus}>
+      <div
+        data-component="pane"
+        className={classSet({maximized: this.props.maximized})}
+        onClick={this.props.onFocus}>
         <header>
           <div data-handle className="primary-details">
-            <div data-handle className="title">{this.state.title}</div>
+            <span data-handle className="title">{this.state.title}</span>
           </div>
 
-          <div className="actions">
+          <aside className="actions">
             <span onClick={this.props.onMinimize} className="action">▿</span>
             <span onClick={this.props.onResize} className="action">❏</span>
             <span onClick={this.props.onClose} className="action">╳</span>
-          </div>
+          </aside>
         </header>
 
         <section data-selectable className="body">

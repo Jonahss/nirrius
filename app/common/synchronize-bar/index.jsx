@@ -48,8 +48,8 @@ module.exports = React.createClass({
 
   render() {
     return <div data-component="synchronize-bar" data-strength={this.state.strength}>
-      <div className="label">{labels[this.state.strength]}</div>
-      <div className="bar"></div>
+      <span className="label">{labels[this.state.strength]}</span>
+      <span className="bar"></span>
     </div>
   }
 })
