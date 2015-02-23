@@ -2,16 +2,18 @@
 
 require("./index.styl")
 
-let
-  React = require("react"),
-  ErrorPage = require("./error-page"),
-  Desktop = require("./desktop"),
-  DesktopHandler = require("./desktop/route-handler"),
-  UsersHandler = require("./users/route-handler"),
-  Router = require("react-router"),
-  {Route, NotFoundRoute, DefaultRoute} = Router
+import React from "react"
+import ErrorPage from "./error-page"
+import Desktop from "./desktop"
+import DesktopHandler from "./desktop/route-handler"
+import UsersHandler from "./users/route-handler"
+import Router from "react-router"
 
-let routes = <Route name="root" path="/" handler={DesktopHandler}>
+let
+  {Route, NotFoundRoute, DefaultRoute} = Router,
+  routes
+
+routes = <Route name="root" path="/" handler={DesktopHandler}>
   <DefaultRoute name="default-desktop" handler={Desktop} />
 
   <Route name="users" path="/~:username/?:entryname?" handler={UsersHandler}>

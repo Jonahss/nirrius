@@ -1,21 +1,21 @@
 require("./index.styl")
 
-let
-  React = require("react"),
-  labels = {
-    0:  "◷",
-    1:  "◴",
-    2:  "◴",
-    3:  "◷",
-    4:  "◶",
-    5:  "◵",
-    6:  "◶",
-    7:  "◵",
-    8:  "◷",
-    9:  "◷"
-  }
+import React from "react"
 
-module.exports = React.createClass({
+let labels = {
+  0:  "◷",
+  1:  "◴",
+  2:  "◴",
+  3:  "◷",
+  4:  "◶",
+  5:  "◵",
+  6:  "◶",
+  7:  "◵",
+  8:  "◷",
+  9:  "◷"
+}
+
+export default React.createClass({
   getDefaultProps() {
     return {
       refreshDelay: 3000

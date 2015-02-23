@@ -1,12 +1,12 @@
 require("./index.styl")
 
-let
-  React = require("react/addons"),
-  SynchronizeBar = require("../synchronize-bar"),
-  {classSet} = React.addons,
-  Draggable = require("react-draggable")
+import React from "react/addons"
+import SynchronizeBar from "../synchronize-bar"
+import Draggable from "react-draggable"
 
-module.exports = React.createClass({
+let {classSet} = React.addons
+
+export default React.createClass({
 
   getDefaultProps() {
     return {

@@ -1,7 +1,8 @@
 require("./index.styl")
 
-let React = require("react")
-module.exports = React.createClass({
+import React from "react"
+
+export default React.createClass({
   getDefaultProps() {
     return {
       entries: []

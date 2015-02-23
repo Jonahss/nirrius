@@ -1,15 +1,15 @@
 require("./index.styl")
 
-let
-  React = require("react"),
-  Router = require("react-router"),
-  Marty = require("marty"),
-  Pane  = require("../common/pane/index.jsx"),
-  desktopStore = require("../stores/desktop"),
-  desktopActions = require("../actions/desktop"),
-  desktopStoreState = Marty.createStateMixin(desktopStore);
+import React from "react"
+import Router from "react-router"
+import Marty from "marty"
+import desktopStore from "../stores/desktop"
+import desktopActions from "../actions/desktop"
+import Pane from "../common/pane/index.jsx"
 
-module.exports = React.createClass({
+let desktopStoreState = Marty.createStateMixin(desktopStore)
+
+export default React.createClass({
   mixins: [Router.State, desktopStoreState],
 
   componentDidMount() {

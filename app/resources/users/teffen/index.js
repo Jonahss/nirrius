@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   fullName: "Teffen Ellis",
   username: "teffen",
   description: "Software Engineer",

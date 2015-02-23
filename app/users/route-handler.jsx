@@ -1,9 +1,8 @@
-let
-  React = require("react"),
-  {RouteHandler} = require("react-router")
+import React from "react"
+import {RouteHandler} from "react-router"
 
-module.exports = React.createClass({
+export default React.createClass({
   render() {
     return <RouteHandler />
   }
-});
+})

@@ -1,13 +1,11 @@
-let
-  _ = require("lodash"),
-  Immutable = require("immutable"),
-  Marty = require("marty"),
-  constants = require("../constants/desktop"),
-  uniqueID = function () {
-    return Math.random().toString(36).substring(7)
-  }
+import _ from "lodash"
+import Immutable from "immutable"
+import Marty from "marty"
+import constants from "../constants/desktop"
 
-module.exports = Marty.createStore({
+let uniqueID = (() => Math.random().toString(36).substring(7))
+
+export default Marty.createStore({
   handlers: {
     createPane: [constants.CREATE_PANE, constants.GET_PANE_FROM_ROUTE],
     bringPaneToFront: constants.BRING_PANE_TO_FRONT,
@@ -25,7 +23,7 @@ module.exports = Marty.createStore({
     attributes = _.extend({}, attributes, {
       paneID: uniqueID()
     })
-    // debugger
+
     this.state.panes = this.state.panes.push(attributes)
     this.hasChanged()
   },

@@ -1,12 +1,11 @@
-let
-  React = require("react"),
-  Marty = require("marty"),
-  constants = require("../constants/desktop"),
-  usersData = require("../resources/users"),
-  Entries = require("../common/entries"),
-  ErrorPage = require("../error-page")
+import React from "react"
+import Marty from "marty"
+import constants from "../constants/desktop"
+import usersData from "../resources/users"
+import Entries from "../common/entries"
+import ErrorPage from "../error-page"
 
-module.exports = Marty.createActionCreators({
+export default Marty.createActionCreators({
   createPane: constants.CREATE_PANE(function (attributes) {
     this.dispatch(attributes)
   }),
