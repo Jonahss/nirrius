@@ -11,25 +11,25 @@ export default React.createClass({
 
   handleNavigate(params, event) {
     event.stopPropagation()
-    this.props.onNavigate(params.username, params.entryname)
+    this.props.onNavigate(params.username, params.entryID)
   },
 
   render() {
-    let
-      props = this.props,
-      entries = props.entries.map((entry, i) =>
+    return <ol data-component="entries">
+      {this.renderEntries()}
+    </ol>
+  },
+
+  renderEntries() {
+    return this.props.entries.map((entry, i) =>
       <li
         key={i}
         onClick={this.handleNavigate.bind(this, {
-          username: props.username,
-          entryname: entry.date
+          username: this.props.username,
+          entryID: entry.id
         })}>
-        {entry.title}
+        <span className="link">{entry.contentTitle}</span>
       </li>
     )
-
-    return <ol data-component="entries">
-      {entries}
-    </ol>
   }
 })

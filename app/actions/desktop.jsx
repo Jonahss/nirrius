@@ -22,7 +22,7 @@ export default Marty.createActionCreators({
     this.dispatch(index)
   }),
 
-  getPaneFromRoute: constants.GET_PANE_FROM_ROUTE(function (username, entryname) {
+  getPaneFromRoute: constants.GET_PANE_FROM_ROUTE(function (username, entryID) {
     let user = usersData[username]
 
     if (typeof user === "undefined") {
@@ -33,16 +33,15 @@ export default Marty.createActionCreators({
       })
     }
 
-    let entry = user.entries.filter(e => e.date === entryname)[0]
+    let entry = user.entries.filter(e => e.id === entryID)[0]
 
-    // debugger
     if (typeof entry !== "undefined") {
       // Show entry.
       this.dispatch(entry)
     } else {
       // Show entries index.
       this.dispatch({
-        title: user.fullName + "'s Holographs",
+        contentTitle: user.fullName + "'s Holographs",
         body: <Entries entries={user.entries} username={username} onNavigate={this.getPaneFromRoute}/>
       })
     }

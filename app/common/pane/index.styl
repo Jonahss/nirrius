@@ -2,11 +2,11 @@ json("../../resources/theme.json")
 
 [data-component="pane"]
   background white
-  border 3px solid black
+  border 3px solid gray-light
   box-shadow rgba(0, 0, 0, 0.1) -3px 4px 0
   flex-flow column
-  overflow scroll
-  min-width 250px
+  overflow auto
+  min-width 450px
   width 50vw
   position absolute
   resize both
@@ -25,14 +25,15 @@ json("../../resources/theme.json")
   &.maximized
     left 0 !important
     top 0 !important
-    width 100vw !important
-    height 100vh !important
+    width 100% !important
+    height calc(100% - 36px) !important // Consideration for taskbar
     border-width 1px
     resize none
 
   & > header
     align-items center
     flex-direction row
+    flex-shrink 1
     justify-content space-between
     padding 2px 5px
     background-color teal-light
@@ -50,6 +51,7 @@ json("../../resources/theme.json")
 
     .title
       background-color teal-light
+      font-family font-serif
       font-size text-small
       padding 0 10px
 
@@ -70,11 +72,13 @@ json("../../resources/theme.json")
   .body
     background-color white
     flex-grow 1
+    flex-shrink 1
     height 50vh
     overflow scroll
     overflow-x hidden
     padding 10px
 
   .connection-status
+    flex-shrink 0
     padding-left 10px
     margin-right 18px

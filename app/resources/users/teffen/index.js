@@ -4,18 +4,18 @@ export default {
   description: "Software Engineer",
   entries: [
     {
-      date: "resume",
-      title: "Resume",
+      id: "resume",
+      contentTitle: "Resume",
       body: require("./holographs/resume.md")
     },
     {
-      date: "2015-02-07",
-      title: "hello world",
+      id: "2015-02-07",
+      contentTitle: "hello world",
       body: "Howdy"
     },
     {
-      date: "2015-02-06",
-      title: "from yesterday",
+      id: "2015-02-06",
+      contentTitle: "from yesterday",
       body: "hi"
     }
   ]

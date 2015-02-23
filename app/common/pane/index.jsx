@@ -11,12 +11,22 @@ export default React.createClass({
   getDefaultProps() {
     return {
       synchronized: true,
-      title: "Window",
+      applicationTitle: "Spectra",
       maximized: false,
       position: {
         x: 10,
         y: 10
       }
+    }
+  },
+
+  getTitle() {
+    let {applicationTitle, contentTitle} = this.props
+
+    if (contentTitle) {
+      return `${applicationTitle.toUpperCase()} ☞ ${contentTitle}`
+    } else {
+      return applicationTitle
     }
   },
 
@@ -38,7 +48,7 @@ export default React.createClass({
         onClick={this.props.onFocus}>
         <header>
           <div data-handle className="primary-details">
-            <span data-handle className="title">{this.state.title}</span>
+            <span data-handle className="title">{this.getTitle()}</span>
           </div>
 
           <aside className="actions">

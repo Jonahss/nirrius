@@ -15,7 +15,8 @@ export default Marty.createStore({
 
   getInitialState() {
     return {
-      panes: Immutable.List()
+      panes: Immutable.List(),
+      systemTime: Date.now()
     }
   },
 
