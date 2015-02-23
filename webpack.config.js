@@ -1,3 +1,5 @@
+"use strict"
+
 var
   ENVIRONMENT = process.env.NODE_ENV || "development",
   path = require("path"),
@@ -74,7 +76,7 @@ if (ENVIRONMENT === "development") {
     contentBase: "./dist/"
   }
 
-  JSXconfig.loaders.push("react-hot")
+  JSXconfig.loaders.unshift("react-hot")
 
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
