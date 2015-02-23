@@ -22,13 +22,12 @@ export default React.createClass({
 
   renderEntries() {
     return this.props.entries.map((entry, i) =>
-      <li
-        key={i}
-        onClick={this.handleNavigate.bind(this, {
+      <li key={i}>
+        <span className="link"
+          onClick={this.handleNavigate.bind(this, {
           username: this.props.username,
           entryID: entry.id
-        })}>
-        <span className="link">{entry.contentTitle}</span>
+        })}>{entry.contentTitle}</span>
       </li>
     )
   }
