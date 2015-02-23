@@ -1,6 +1,7 @@
 require("./index.styl")
 
 import React from "react"
+import {requestInterval, clearRequestInterval} from "../../helpers/interval-animation"
 
 let labels = {
   0:  "◷",
@@ -29,11 +30,11 @@ export default React.createClass({
   },
 
   componentDidMount() {
-    this.interval = setInterval(this.refresh, this.props.refreshDelay)
+    this.interval = requestInterval(this.refresh, this.props.refreshDelay)
   },
 
   componentWillUnmount() {
-    clearInterval(this.interval)
+    clearRequestInterval(this.interval)
   },
 
   refresh() {
