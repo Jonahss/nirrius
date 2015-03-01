@@ -6,8 +6,7 @@ var
   metaAttributes = require("./app/resources/meta-attributes.json"),
   webpack = require("webpack"),
   HtmlWebpackPlugin = require("html-webpack-plugin"),
-  config,
-  loaders;
+  config;
 
 config = {
   devtool: "source-map",
