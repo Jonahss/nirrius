@@ -9,6 +9,13 @@ import DesktopHandler from "./desktop/route-handler"
 import UsersHandler from "./users/route-handler"
 import Router from "react-router"
 
+let link   = document.createElement("link")
+link.type  = "image/x-icon"
+link.rel   = "shortcut icon"
+link.sizes = "16x16"
+link.href  = require("../assets/images/floppy.png")
+document.querySelector("head").appendChild(link)
+
 let
   {Route, NotFoundRoute, DefaultRoute} = Router,
   routes
