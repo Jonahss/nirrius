@@ -9,7 +9,7 @@ import applicationsStore from "../stores/applications"
 import desktopActions from "../actions/desktop"
 import Pane from "../common/pane/index.jsx"
 import Taskbar from "../common/taskbar/index.jsx"
-import Applications from "../common/applications/index.jsx"
+import Applications from "../applications/index.jsx"
 
 let desktopStoreState = Marty.createStateMixin({
   getState() {

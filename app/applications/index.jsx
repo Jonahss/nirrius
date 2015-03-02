@@ -1,7 +1,7 @@
 require("./index.styl")
 
 import React from "react"
-import desktopActions from "../../actions/desktop"
+import desktopActions from "../actions/desktop"
 
 export default React.createClass({
   getDefaultProps() {
