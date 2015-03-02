@@ -2,6 +2,7 @@ require("./index.styl")
 
 import React from "react"
 import moment from "moment"
+import classnames from "classnames"
 import desktopActions from "../../actions/desktop"
 import {requestInterval, clearRequestInterval} from "../../helpers/interval-animation"
 
@@ -40,16 +41,21 @@ export default React.createClass({
   },
 
   renderItems() {
-    let {items} = this.props
+    let
+      {items} = this.props,
+      creationOrder = (a, b) => a.creationOrder - b.creationOrder
 
-    return items.map((item, i) =>
+    return items.sort(creationOrder).map((item, i) =>
       <div
-        className="task-item"
+        className={classnames("task-item", {
+          focused: item.focused,
+          minimized: item.minimized
+        })}
         key={i}
-        onClick={this.bringPaneToFront.bind(this, i)}>
-        <span className="inner">{item.contentTitle}</span>
+        onClick={this.bringPaneToFront.bind(this, item.storeIndex)}>
+        <span className="inner">{item.contentTitle || item.applicationTitle}</span>
       </div>
-    ).reverse()
+    )
   },
 
   render() {
@@ -65,7 +71,6 @@ export default React.createClass({
   },
 
   updateClock() {
-    console.debug("updating")
     this.setState({
       systemTime: this.state.systemTime.add(1)
     })

@@ -7,7 +7,7 @@ json("../../resources/theme.json")
   flex-flow column
   overflow auto
   min-width 450px
-  width 50vw
+  width 35vw
   position absolute
   resize both
   transform translate3d(0,0,0)
@@ -29,6 +29,9 @@ json("../../resources/theme.json")
     height calc(100% - 36px) !important // Consideration for taskbar
     border-width 1px
     resize none
+
+  &.minimized
+    display none
 
   & > header
     align-items center

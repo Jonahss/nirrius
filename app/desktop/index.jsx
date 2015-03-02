@@ -3,12 +3,26 @@ require("./index.styl")
 import React from "react"
 import Router from "react-router"
 import Marty from "marty"
+import _ from "lodash"
 import desktopStore from "../stores/desktop"
+import applicationsStore from "../stores/applications"
 import desktopActions from "../actions/desktop"
 import Pane from "../common/pane/index.jsx"
 import Taskbar from "../common/taskbar/index.jsx"
+import Applications from "../common/applications/index.jsx"
 
-let desktopStoreState = Marty.createStateMixin(desktopStore)
+let desktopStoreState = Marty.createStateMixin({
+  getState() {
+    return {
+      panes: desktopStore.state.panes,
+      applications: applicationsStore.state.applications
+    }
+  },
+  listenTo: [
+    applicationsStore,
+    desktopStore
+  ]
+})
 
 const paneOffset = {x: 20, y: 25}
 
@@ -46,16 +60,28 @@ export default React.createClass({
   getTaskbarItems() {
     let panes = this.state.panes.toArray()
 
-    return panes.map(function (pane, index) {
-      let {applicationTitle, contentTitle} = pane
+    return panes.map(function (pane, storeIndex) {
+      return _.extend({
+        storeIndex,
+        focused: storeIndex === panes.length - 1
+      }, pane)
+    })
+  },
 
-      return {applicationTitle, contentTitle, index}
+  minimizePane(index, event) {
+    event.stopPropagation()
+
+    desktopActions.setPaneAttributes(index, {
+      minimized: true
     })
   },
 
   render() {
-    return <main data-component='desktop'>
+    return <main data-component="desktop">
       <div className="scanlines"></div>
+
+      <Applications items={this.state.applications} />
+
       {this.renderPanes()}
       <Taskbar items={this.getTaskbarItems()} systemTime={this.state.systemTime} />
     </main>
@@ -70,23 +96,28 @@ export default React.createClass({
 
       if (typeof attributes.body === "string") {
         // Convert HTML string.
-        body = <div dangerouslySetInnerHTML={{__html: attributes.body}} />
+        body = <div dangerouslySetInnerHTML={{__html: attributes.body}} data-selectable />
       }
 
       return <Pane
         {...attributes}
         key={attributes.paneID}
-        position={calculatePanePosition(i)} // Cascade panes.
-        onResize={this.togglePaneMaximization.bind(this, i)}
         onClose={this.closePane.bind(this, i)}
-        onFocus={this.bringPaneToFront.bind(this, i)}>
+        onMaximize={this.togglePaneMaximization.bind(this, i, attributes)}
+        onMinimize={this.minimizePane.bind(this, i)}
+        onFocus={this.bringPaneToFront.bind(this, i)}
+        position={calculatePanePosition(i)}>
         {body}
       </Pane>
     }.bind(this))
   },
 
-  togglePaneMaximization(index) {
-    desktopActions.togglePaneMaximization(index)
+  togglePaneMaximization(index, attributes, event) {
+    event.stopPropagation()
+
+    desktopActions.setPaneAttributes(index, {
+      maximized: !attributes.maximized
+    })
   }
 
 })

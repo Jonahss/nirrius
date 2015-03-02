@@ -10,14 +10,13 @@ json("../../resources/theme.json")
 
   width 100%
 
+  padding 0 5px
+
   .tasks
     flex-direction row
     flex-wrap wrap
     flex-shrink 1
     align-items center
-
-  .task-item:first-child
-    margin-left 5px
 
   .task-item
     display flex
@@ -35,6 +34,13 @@ json("../../resources/theme.json")
 
       font-size text-small
       font-family font-serif
+
+    &.focused .inner
+      text-decoration underline
+
+    &.minimized
+      filter: grayscale(100%) !important
+      text-decoration line-through
 
     &:hover .inner
       background-color lighten(green-light, 30%)

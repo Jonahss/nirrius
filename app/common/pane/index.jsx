@@ -1,22 +1,23 @@
 require("./index.styl")
 
-import React from "react/addons"
+import React from "react"
 import SynchronizeBar from "../synchronize-bar"
 import Draggable from "react-draggable"
+import classnames from "classnames"
 
-let {classSet} = React.addons
+const DRAGGING_CLASS = "dragging"
 
 export default React.createClass({
 
   getDefaultProps() {
     return {
-      synchronized: true,
       applicationTitle: "Spectra",
       maximized: false,
       position: {
         x: 10,
         y: 10
-      }
+      },
+      synchronized: true
     }
   },
 
@@ -26,44 +27,58 @@ export default React.createClass({
     if (contentTitle) {
       return `${applicationTitle.toUpperCase()} ☞ ${contentTitle}`
     } else {
-      return applicationTitle
+      return applicationTitle.toUpperCase()
     }
   },
 
   getInitialState() {
     return {
-      title: this.props.title,
       position: this.props.position
     }
   },
 
+  handleDragStart() {
+    document.body.classList.add(DRAGGING_CLASS)
+    this.props.onFocus()
+  },
+
+  handleDragStop() {
+    document.body.classList.remove(DRAGGING_CLASS)
+  },
+
   render() {
+    let props = this.props
+
     return <Draggable
       handle="[data-component='pane']:not(.maximized) [data-handle]"
       start={this.state.position}
-      onStart={this.props.onFocus}>
+      onStart={this.handleDragStart}
+      onStop={this.handleDragStop}>
       <div
         data-component="pane"
-        className={classSet({maximized: this.props.maximized})}
-        onClick={this.props.onFocus}>
+        className={classnames({
+          maximized: props.maximized,
+          minimized: props.minimized
+        })}
+        onClick={props.onFocus}>
         <header>
-          <div data-handle className="primary-details">
+          <div data-handle className="primary-details" onDoubleClick={props.onMaximize}>
             <span data-handle className="title">{this.getTitle()}</span>
           </div>
 
           <aside className="actions">
-            <span onClick={this.props.onMinimize} className="action">▿</span>
-            <span onClick={this.props.onResize} className="action">❏</span>
-            <span onClick={this.props.onClose} className="action">╳</span>
+            <span onClick={props.onMinimize} className="action">_</span>
+            <span onClick={props.onMaximize} className="action">❏</span>
+            <span onClick={props.onClose} className="action">×</span>
           </aside>
         </header>
 
-        <section data-selectable className="body">
-          {this.props.children}
+        <section className="body">
+          {props.children}
         </section>
 
         <footer className="connection-status">
-          <SynchronizeBar refreshDelay={this.props.synchronized ? 3000 : 100} />
+          <SynchronizeBar refreshDelay={props.synchronized ? 3000 : 100} />
         </footer>
       </div>
     </Draggable>

@@ -1,0 +1,36 @@
+json("../../resources/theme.json")
+
+[data-component="applications"]
+  align-items flex-end
+  flex-direction column
+
+  margin 10px
+
+  .item
+    align-items center
+    display flex
+    flex-direction column
+
+    font-family font-serif
+
+    padding 4px
+
+    .icon
+      align-items center
+      justify-content center
+      display flex
+      font-size 40px
+      font-weight bold
+
+      background-color rgba(255, 255, 255, 0.1)
+      height 50px
+      width 50px
+
+    .icon + .title
+      margin-top 5px
+
+  .item:hover
+    background-color rgba(255, 255, 255, 0.1)
+
+  .item:active
+    background-color rgba(255, 255, 255, 0.2)
