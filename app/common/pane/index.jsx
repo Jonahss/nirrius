@@ -55,11 +55,12 @@ export default React.createClass({
       onStart={this.handleDragStart}
       onStop={this.handleDragStop}>
       <div
-        data-component="pane"
         className={classnames({
           maximized: props.maximized,
-          minimized: props.minimized
+          minimized: props.minimized,
+          prominent: props.prominent
         })}
+        data-component="pane"
         onClick={props.onFocus}>
         <header>
           <div data-handle className="primary-details" onDoubleClick={props.onMaximize}>
@@ -67,14 +68,14 @@ export default React.createClass({
           </div>
 
           <aside className="actions">
-            <span onClick={props.onMinimize} className="action">_</span>
-            <span onClick={props.onMaximize} className="action">❏</span>
-            <span onClick={props.onClose} className="action">×</span>
+            <span className="action" onClick={props.onMinimize}>_</span>
+            <span className="action" onClick={props.onMaximize}>❏</span>
+            <span className="action" onClick={props.onClose}>×</span>
           </aside>
         </header>
 
         <section className="body">
-          {props.children}
+          {props.children || props.body}
         </section>
 
         <footer className="connection-status">

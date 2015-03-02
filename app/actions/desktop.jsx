@@ -1,9 +1,10 @@
-import React from "react"
-import Marty from "marty"
-import constants from "../constants/desktop"
 import {recordsByUsername} from "../resources/users"
-import Entries from "../common/entries"
+import constants from "../constants/desktop"
+import Entries from "../applications/entries"
 import ErrorPage from "../error-page"
+import Marty from "marty"
+import React from "react"
+import Spectra from "../applications/spectra"
 
 export default Marty.createActionCreators({
   createPane: constants.CREATE_PANE(function (attributes) {
@@ -43,7 +44,11 @@ export default Marty.createActionCreators({
 
     if (typeof entry !== "undefined") {
       // Show entry.
-      this.dispatch(entry)
+      this.dispatch({
+        prominent: true,
+        contentTitle: entry.contentTitle,
+        body: <Spectra body={entry.body} />
+      })
     } else {
       // Show entries index.
       this.dispatch({

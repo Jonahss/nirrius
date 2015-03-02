@@ -94,11 +94,6 @@ export default React.createClass({
     return panes.map(function (attributes, i) {
       let body = attributes.body
 
-      if (typeof attributes.body === "string") {
-        // Convert HTML string.
-        body = <div dangerouslySetInnerHTML={{__html: attributes.body}} data-selectable />
-      }
-
       return <Pane
         {...attributes}
         key={attributes.paneID}
@@ -106,9 +101,7 @@ export default React.createClass({
         onMaximize={this.togglePaneMaximization.bind(this, i, attributes)}
         onMinimize={this.minimizePane.bind(this, i)}
         onFocus={this.bringPaneToFront.bind(this, i)}
-        position={calculatePanePosition(i)}>
-        {body}
-      </Pane>
+        position={calculatePanePosition(i)} />
     }.bind(this))
   },
 

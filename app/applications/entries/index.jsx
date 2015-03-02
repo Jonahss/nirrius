@@ -15,7 +15,7 @@ export default React.createClass({
   },
 
   render() {
-    return <section data-component="entries">
+    return <section data-component="applications/entries">
      {this.renderTable()}
     </section>
   },

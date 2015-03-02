@@ -1,6 +1,6 @@
 import React from "react"
 
-import {recordsByList} from "../../../resources/users"
+import {recordsByList} from "../../resources/users"
 
 export default React.createClass({
   render() {

@@ -6,7 +6,7 @@ export default Marty.createStore({
       applications: [
         {
           applicationTitle: "Directory",
-          body: require("../common/applications/directory")
+          body: require("../applications/directory")
         }
       ]
     }
