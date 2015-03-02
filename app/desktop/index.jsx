@@ -46,8 +46,8 @@ export default React.createClass({
 
   componentDidMount() {
     let {username, entryname} = this.getParams()
-    if (typeof username !== null) {
-      desktopActions.getPaneFromRoute(username, entryname)
+    if (username) {
+      return desktopActions.getPaneFromRoute(username, entryname)
     }
   },
 

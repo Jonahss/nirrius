@@ -1,7 +1,9 @@
-export let recordsByUsername = {
+let recordsByList = [
+  require("./teffen")
+]
+
+let recordsByUsername = {
   teffen: require("./teffen")
 }
 
-export let recordsByList = [
-  require("./teffen")
-]
+export default {recordsByList, recordsByUsername}

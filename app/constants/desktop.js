@@ -6,5 +6,6 @@ export default Marty.createConstants([
   "CREATE_PANE",
   "GET_PANE_FROM_ROUTE",
   "GET_PANE_FROM_APPLICATION",
+  "LOAD_DEFAULT_APPLICATIONS",
   "SET_PANE_ATTRIBUTES"
 ])

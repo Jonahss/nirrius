@@ -1,10 +1,11 @@
-import {recordsByUsername} from "../resources/users"
+import Users from "../resources/users"
 import constants from "../constants/desktop"
 import Entries from "../applications/entries"
 import ErrorPage from "../error-page"
 import Marty from "marty"
 import React from "react"
 import Spectra from "../applications/spectra"
+import Directory from "../applications/directory"
 
 export default Marty.createActionCreators({
   createPane: constants.CREATE_PANE(function (attributes) {
@@ -20,16 +21,11 @@ export default Marty.createActionCreators({
   }),
 
   getPaneFromApplication: constants.GET_PANE_FROM_APPLICATION(function (application) {
-    let Application = application.body
-
-    return this.dispatch({
-      applicationTitle: application.applicationTitle,
-      contentTitle: application.contentTitle,
-      body: <Application />})
+    return this.dispatch(application)
   }),
 
   getPaneFromRoute: constants.GET_PANE_FROM_ROUTE(function (username, entryID) {
-    let user = recordsByUsername[username]
+    let user = Users.recordsByUsername[username]
 
     if (typeof user === "undefined") {
       return this.dispatch({
@@ -53,9 +49,16 @@ export default Marty.createActionCreators({
       // Show entries index.
       this.dispatch({
         contentTitle: user.fullName + "'s Holographs",
-        body: <Entries entries={user.entries} username={username} onNavigate={this.getPaneFromRoute}/>
+        body: <Entries entries={user.entries} username={username} onNavigate={this.getPaneFromRoute} />
       })
     }
+  }),
+
+  loadDefaultApplications: constants.LOAD_DEFAULT_APPLICATIONS(function () {
+    this.dispatch([{
+      applicationTitle: Directory.applicationTitle,
+      body: <Directory items={Users.recordsByList} />
+    }])
   }),
 
   setPaneAttributes: constants.SET_PANE_ATTRIBUTES(function (index, attributes) {

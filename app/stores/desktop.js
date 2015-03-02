@@ -55,7 +55,12 @@ export default Marty.createStore({
     ],
     bringPaneToFront: constants.BRING_PANE_TO_FRONT,
     closePane: constants.CLOSE_PANE,
+    loadDefaultApplications: constants.LOAD_DEFAULT_APPLICATIONS,
     setPaneAttributes: constants.SET_PANE_ATTRIBUTES
+  },
+
+  loadDefaultApplications(panes) {
+    panes.forEach((pane) => this.createPane(pane))
   },
 
   setPaneAttributes(index, attributes) {
