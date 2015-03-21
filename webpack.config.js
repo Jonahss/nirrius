@@ -39,8 +39,16 @@ config = {
     typographer: true
   },
   resolve: {
-    modulesDirectories: ["assets", "node_modules"],
-    extensions: ["", ".js", ".jsx", ".json"]
+    modulesDirectories: [
+      "app",
+      "node_modules"
+    ],
+    extensions: [
+      "",
+      ".js",
+      ".jsx",
+      ".json"
+    ]
   }
 }
 
@@ -54,7 +62,7 @@ config.module.loaders.push(
   {test: /\.eot$/,  loader: "file-loader?prefix=font/"},
   {test: /\.ttf$/,  loader: "file-loader?prefix=font/"},
   {test: /\.md$/,   loader: "html!remarkable"},
-  {test: /\.styl$/, loader: "style-loader!css-loader!autoprefixer!stylus-loader?paths=node_modules/"},
+  {test: /\.styl$/, loader: "style-loader!css-loader!autoprefixer!stylus-loader?paths=app/resources/"},
   {test: /\.json$/, loader: "json-loader", exclude: [/node_modules/]},
   {test: /\.js$/,   loader: "babel-loader?optional=runtime", exclude: [/node_modules/]}
 )

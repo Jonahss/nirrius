@@ -3,7 +3,6 @@
 require("./index.styl")
 
 import React from "react"
-import Desktop from "./desktop"
 import routes from "./routes"
 import Router from "react-router"
 
