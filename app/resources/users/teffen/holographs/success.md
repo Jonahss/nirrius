@@ -20,4 +20,4 @@ Which is worse, those who saw success and failed, or those who never tried? Who 
 
 Indeed, there's no room for a tale of humble success. I can't think of a more apt irony than an industry of me-tooers demanding extraordinary success. An industry who builds taller labyrinths and demands the world conform to its madness.
 
-Deep, deep, under the lacquered facade lies true success. The only ill fitting definition of success is prescribed by someone looking for their own.
+Deep, deep, under the lacquered facade lies true success. The only ill fitting definition of success is prescribed by another looking for their own.
