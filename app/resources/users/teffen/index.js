@@ -9,9 +9,9 @@ export default {
       body: require("./holographs/resume.md")
     },
     {
-      id: "2015-02-07",
-      contentTitle: "hello world",
-      body: "Howdy"
+      id: "success",
+      contentTitle: "Success",
+      body: require("./holographs/success.md")
     },
     {
       id: "2015-02-06",
